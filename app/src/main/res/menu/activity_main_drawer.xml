@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item android:title="Alumnos">
+            <menu>
+                <item
+                    android:id="@+id/nav_login"
+                    android:title="Calendario" />
+                <item
+                    android:id="@+id/nav_photos"
+                    android:title="Horarios" />
+                <item
+                    android:id="@+id/nav_movies"
+                    android:title="Calificaciones" />
+
+                <item
+                    android:id="@+id/nav_notifications"
+                    android:title="Información" />
+            </menu>
+        </item>
+    </group>
+
+    <item android:title="Más opciones">
+        <menu>
+            <item
+                android:id="@+id/nav_about_us"
+                android:title="Revista" />
+            <item
+                android:id="@+id/nav_privacy_policy"
+                android:title="Concactanos" />
+        </menu>
+    </item>
+</menu>

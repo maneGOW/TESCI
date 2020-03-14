@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/ratingsFragment">
+
+    <fragment
+        android:id="@+id/nav_login"
+        android:name="com.manegow.tesci.ui.login.LoginFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_login"/>
+
+    <fragment
+        android:id="@+id/nav_calendario"
+        android:name="com.manegow.tesci.ui.calendar.CalendarFragment"
+        android:label="Calendario"
+        tools:layout="@layout/fragment_calendar" />
+    <fragment
+        android:id="@+id/nav_singup"
+        android:name="com.manegow.tesci.ui.signup.SignupFragment"
+        tools:layout="@layout/fragment_signup"
+        android:label="Regístrate" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.manegow.tesci.ui.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/splashScreenFragment"
+        tools:layout="@layout/fragment_splash_screen"
+        android:name="com.manegow.tesci.ui.splashscreen.SplashScreenFragment"
+        android:label="SplashScreenFragment" />
+    <fragment
+        android:id="@+id/ratingsFragment"
+        android:name="com.manegow.tesci.ui.ratings.RatingsFragment"
+        android:label="fragment_ratings"
+        tools:layout="@layout/fragment_ratings" >
+        <action
+            android:id="@+id/action_ratingsFragment_to_ratingsDetailFragment"
+            app:destination="@id/ratingsDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ratingsDetailFragment"
+        android:name="com.manegow.tesci.ui.ratingsdetail.RatingsDetailFragment"
+        android:label="fragment_ratings_detail"
+        tools:layout="@layout/fragment_ratings_detail" />
+
+</navigation>
