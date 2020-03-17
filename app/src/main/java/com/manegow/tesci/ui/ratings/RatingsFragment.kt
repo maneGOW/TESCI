@@ -8,13 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.manegow.tesci.R
 import com.manegow.tesci.databinding.FragmentRatingsBinding
 import com.manegow.tesci.db.TesciDatabase
 import com.manegow.tesci.utils.adapters.SemesterAdapter
 import com.manegow.tesci.utils.adapters.SemesterTouchListener
-
 
 class RatingsFragment : Fragment() {
     override fun onCreateView(
@@ -36,15 +36,14 @@ class RatingsFragment : Fragment() {
 
         bindingMovements.recyclerSemester.layoutManager = manager
 
-        /* ratingsViewModel..observe(viewLifecycleOwner, Observer{
-                 movement ->
-             movement?.let{
-                 this.findNavController().navigate(
-                     MovementsFragmentDirections.actionMovementsFragmentToPaymentDetailFragment(movement))
-                 movementsViewModel.onMovementNavigated()
-             }
-         })
-         */
+        ratingsViewModel.navigateToRatingsDetail.observe(viewLifecycleOwner, Observer { semester ->
+            semester?.let {
+                println("Semester data ------ $semester")
+                this.findNavController().navigate(
+                    RatingsFragmentDirections.actionRatingsFragmentToRatingsDetailFragment(semester))
+                ratingsViewModel.onMovementNavigated()
+            }
+        })
 
         val adapter = SemesterAdapter(SemesterTouchListener { semesterId ->
             ratingsViewModel.onSemesterClicked(semesterId)
@@ -60,7 +59,4 @@ class RatingsFragment : Fragment() {
         return bindingMovements.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-    }
 }

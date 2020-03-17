@@ -26,6 +26,9 @@ interface TesciDao {
     @Update
     fun updateRating(rating: Rating)
 
+    @Query("SELECT * from rating_table WHERE rating_school_grades = :ratingSchoolGrade")
+    fun getRatingFromGrade(ratingSchoolGrade: Long): LiveData<List<Rating>>
+
     @Query("SELECT * from rating_table WHERE ratingId = :ratingKey")
     fun getRating(ratingKey: Long): Rating
 
@@ -42,10 +45,10 @@ interface TesciDao {
     @Query("SELECT * FROM semesters_table WHERE semesterId = :semesterKey")
     fun getSemester(semesterKey: Long): Semester
 
-    @Query("SELECT * FROM semesters_table ORDER BY semesterId DESC")
+    @Query("SELECT * FROM semesters_table ORDER BY semesterId ASC")
     fun getAllSemesters(): LiveData<List<Semester>>
 
-    @Query("SELECT * FROM semesters_table ORDER BY semesterId DESC")
+    @Query("SELECT * FROM semesters_table ORDER BY semesterId ASC")
     fun getSemesters(): Semester?
 
     @Delete

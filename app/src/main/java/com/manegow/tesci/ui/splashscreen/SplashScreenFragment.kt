@@ -38,6 +38,7 @@ class SplashScreenFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         Handler().postDelayed({
             context?.let {
+                
 
             }
         }, 2500)

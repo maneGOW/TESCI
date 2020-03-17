@@ -7,17 +7,17 @@
         <item android:title="Alumnos">
             <menu>
                 <item
-                    android:id="@+id/nav_login"
+                    android:id="@+id/nav_calendario"
                     android:title="Calendario" />
                 <item
-                    android:id="@+id/nav_photos"
+                    android:id="@+id/nav_horarios"
                     android:title="Horarios" />
                 <item
-                    android:id="@+id/nav_movies"
+                    android:id="@+id/nav_calificaciones"
                     android:title="Calificaciones" />
 
                 <item
-                    android:id="@+id/nav_notifications"
+                    android:id="@+id/nav_info"
                     android:title="Información" />
             </menu>
         </item>

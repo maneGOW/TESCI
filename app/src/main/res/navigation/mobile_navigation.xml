@@ -3,13 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/ratingsFragment">
+    app:startDestination="@id/splashScreenFragment">
 
     <fragment
         android:id="@+id/nav_login"
         android:name="com.manegow.tesci.ui.login.LoginFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_login"/>
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_nav_login_to_nav_singup"
+            app:destination="@id/nav_singup" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_calendario"
@@ -30,12 +34,19 @@
         android:id="@+id/splashScreenFragment"
         tools:layout="@layout/fragment_splash_screen"
         android:name="com.manegow.tesci.ui.splashscreen.SplashScreenFragment"
-        android:label="SplashScreenFragment" />
+        android:label="SplashScreenFragment" >
+        <action
+            android:id="@+id/action_splashScreenFragment_to_nav_login"
+            app:destination="@id/nav_login" />
+        <action
+            android:id="@+id/action_splashScreenFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/ratingsFragment"
         android:name="com.manegow.tesci.ui.ratings.RatingsFragment"
-        android:label="fragment_ratings"
-        tools:layout="@layout/fragment_ratings" >
+        android:label="Calificaciones"
+        tools:layout="@layout/fragment_ratings">
         <action
             android:id="@+id/action_ratingsFragment_to_ratingsDetailFragment"
             app:destination="@id/ratingsDetailFragment" />
@@ -44,6 +55,11 @@
         android:id="@+id/ratingsDetailFragment"
         android:name="com.manegow.tesci.ui.ratingsdetail.RatingsDetailFragment"
         android:label="fragment_ratings_detail"
-        tools:layout="@layout/fragment_ratings_detail" />
+        tools:layout="@layout/fragment_ratings_detail" >
+
+        <argument
+            android:name="semester"
+            app:argType="integer" />
+    </fragment>
 
 </navigation>

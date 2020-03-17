@@ -16,7 +16,7 @@ data class Rating(
     var ratingControlNumber: Long = 0L,
 
     @ColumnInfo(name = "rating_score")
-    var ratingScore: Long = 0L,
+    var ratingScore: Float = 0.0F,
 
     @ColumnInfo(name = "rating_name")
     var ratingName : String

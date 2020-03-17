@@ -16,7 +16,7 @@ import java.lang.ClassCastException
 private val ITEM_VIEW_TYPE_HEADER = 0
 private val ITEM_VIEW_TYPE_ITEM = 1
 
-class SemesterAdapter(val semesterTouchListener: SemesterTouchListener) :
+class SemesterAdapter(val clickListener: SemesterTouchListener) :
     ListAdapter<SemesterDataItem, RecyclerView.ViewHolder>(SemesterDiffCallback()) {
     private val adapterScope = CoroutineScope(Dispatchers.Default)
 
@@ -35,7 +35,9 @@ class SemesterAdapter(val semesterTouchListener: SemesterTouchListener) :
     class ViewHolder private constructor(val binding: SemesterItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(clickListener: SemesterTouchListener, item: Semester) {
+            binding.semester = item
             binding.txtName.text = item.semesterNumber.toString()
+            binding.clickListener = clickListener
             binding.executePendingBindings()
         }
 
@@ -59,7 +61,7 @@ class SemesterAdapter(val semesterTouchListener: SemesterTouchListener) :
         when (holder) {
             is ViewHolder -> {
                 val semesterItem = getItem(position) as SemesterDataItem.SemesterItem
-                holder.bind(semesterTouchListener, semesterItem.semester)
+                holder.bind(clickListener, semesterItem.semester)
             }
         }
     }
@@ -81,16 +83,16 @@ class SemesterDiffCallback : DiffUtil.ItemCallback<SemesterDataItem>() {
     }
 }
 
-class SemesterTouchListener(val clickListener: (semesterId: String) -> Unit) {
-    fun onClick(semester: Semester) = clickListener(semester.semesterId.toString())
+class SemesterTouchListener(val clickListener: (semesterId: Int) -> Unit) {
+    fun onClick(semester: Semester) = clickListener(semester.semesterNumber)
 }
 
 sealed class SemesterDataItem {
     data class SemesterItem(val semester: Semester) : SemesterDataItem() {
-        override val id = semester.semesterId
+        override val id = semester.semesterNumber
     }
     object Header : SemesterDataItem() {
-        override val id = Long.MIN_VALUE
+        override val id = Int.MIN_VALUE
     }
-    abstract val id: Long
+    abstract val id: Int
 }
