@@ -57,4 +57,69 @@ interface TesciDao {
     @Query("DELETE FROM semesters_table")
     fun deleteAllSemesters()
 
+    //------------------------ DAYS ----------------
+    @Insert
+    fun insertDay(day: Days)
+
+    @Update
+    fun updateDay(day: Days)
+
+    @Query("SELECT * FROM days_table WHERE dayId = :dayKey")
+    fun getDay(dayKey: Long): Days
+
+    @Query("SELECT * FROM days_table ORDER BY dayId ASC")
+    fun getAllDays(): LiveData<List<Days>>
+
+    @Query("SELECT * FROM days_table ORDER BY dayId ASC")
+    fun getDays(): Days?
+
+    @Delete
+    fun deleteDays(day: Days)
+
+    @Query("DELETE FROM days_table")
+    fun deleteAllDays()
+
+    //------------------------ Details ----------------
+    @Insert
+    fun insertHoraryDetail(horaryDetail: HoraryDetail)
+
+    @Update
+    fun updateHoraryDetail(horaryDetail: HoraryDetail)
+
+    @Query("SELECT * FROM horary_detail_table WHERE horary_day = :dayKey")
+    fun getHoraryDetial(dayKey: String): HoraryDetail
+
+    @Query("SELECT * FROM horary_detail_table WHERE horary_day =:dayKey ORDER BY horaryDetailId ASC")
+    fun getAllHoraryDetail(dayKey:String): LiveData<List<HoraryDetail>>
+
+    @Query("SELECT * FROM horary_detail_table ORDER BY horaryDetailId ASC")
+    fun getHoraryDetails(): HoraryDetail?
+
+    @Delete
+    fun deleteHoraryDetails(horaryDetail: HoraryDetail)
+
+    @Query("DELETE FROM horary_detail_table")
+    fun deleteAllHoraryDetails()
+
+    //------------------------ Difuison Notes ----------------
+    @Insert
+    fun inserDifusionNotes(difusionNotes: DifusionNotes)
+
+    @Update
+    fun updateHoraryDetail(difusionNotes: DifusionNotes)
+
+    @Query("SELECT * FROM difusion_notes_table WHERE noteId = :noteId")
+    fun getDifusionNoteDetail(noteId: Int): DifusionNotes
+
+    @Query("SELECT * FROM difusion_notes_table ORDER BY noteId ASC")
+    fun getAllDifusionNotesDetail(): LiveData<List<DifusionNotes>>
+
+    @Query("SELECT * FROM difusion_notes_table ORDER BY noteId ASC")
+    fun getDifuisonNotesDetails(): DifusionNotes?
+
+    @Delete
+    fun deleteHoraryDetails(difusionNotes: DifusionNotes)
+
+    @Query("DELETE FROM difusion_notes_table")
+    fun deleteAllDifusionNotes()
 }

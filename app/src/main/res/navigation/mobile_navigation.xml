@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_nav_login_to_nav_singup"
             app:destination="@id/nav_singup" />
+        <action
+            android:id="@+id/action_nav_login_to_homeFragment"
+            app:destination="@id/nav_home" />
     </fragment>
 
     <fragment
@@ -23,43 +26,93 @@
     <fragment
         android:id="@+id/nav_singup"
         android:name="com.manegow.tesci.ui.signup.SignupFragment"
-        tools:layout="@layout/fragment_signup"
-        android:label="Regístrate" />
+        android:label="Regístrate"
+        tools:layout="@layout/fragment_signup" >
+        <action
+            android:id="@+id/action_nav_singup_to_nav_login"
+            app:destination="@id/nav_login" />
+    </fragment>
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/nav_home"
         android:name="com.manegow.tesci.ui.home.HomeFragment"
-        android:label="fragment_home"
+        android:label="Bienvenido"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/splashScreenFragment"
-        tools:layout="@layout/fragment_splash_screen"
         android:name="com.manegow.tesci.ui.splashscreen.SplashScreenFragment"
-        android:label="SplashScreenFragment" >
+        android:label="SplashScreenFragment"
+        tools:layout="@layout/fragment_splash_screen">
         <action
             android:id="@+id/action_splashScreenFragment_to_nav_login"
-            app:destination="@id/nav_login" />
+            app:destination="@id/nav_login"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/splashScreenFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_splashScreenFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/nav_home"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/splashScreenFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
-        android:id="@+id/ratingsFragment"
+        android:id="@+id/nav_ratings"
         android:name="com.manegow.tesci.ui.ratings.RatingsFragment"
         android:label="Calificaciones"
         tools:layout="@layout/fragment_ratings">
         <action
             android:id="@+id/action_ratingsFragment_to_ratingsDetailFragment"
-            app:destination="@id/ratingsDetailFragment" />
+            app:destination="@id/nav_ratdetail" />
     </fragment>
     <fragment
-        android:id="@+id/ratingsDetailFragment"
+        android:id="@+id/nav_ratdetail"
         android:name="com.manegow.tesci.ui.ratingsdetail.RatingsDetailFragment"
-        android:label="fragment_ratings_detail"
-        tools:layout="@layout/fragment_ratings_detail" >
+        android:label="Detalle de Calificaciones"
+        tools:layout="@layout/fragment_ratings_detail">
 
         <argument
             android:name="semester"
             app:argType="integer" />
     </fragment>
-
+    <fragment
+        android:id="@+id/nav_difusion"
+        android:name="com.manegow.tesci.ui.difusion.DifusionFragment"
+        android:label="Difusión"
+        tools:layout="@layout/fragment_difusion" >
+        <action
+            android:id="@+id/action_nav_difusion_to_difusionDetailFragment"
+            app:destination="@id/difusionDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_horary"
+        android:name="com.manegow.tesci.ui.horary.HoraryFragment"
+        android:label="Horarios"
+        tools:layout="@layout/fragment_horary">
+        <action
+            android:id="@+id/action_nav_horary_to_nav_horarydetail"
+            app:destination="@id/nav_horarydetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_horarydetail"
+        android:name="com.manegow.tesci.ui.horarydetail.HoraryDetailFragment"
+        android:label="Detalle de horarios"
+        tools:layout="@layout/fragment_horary_detail" >
+        <argument
+            android:name="day"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/difusionDetailFragment"
+        android:name="com.manegow.tesci.ui.difusiondetail.DifusionDetailFragment"
+        android:label="Detalle"
+        tools:layout="@layout/fragment_difusion_detail" >
+        <argument
+            android:name="noteId"
+            app:argType="long" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_about_us"
+        android:name="com.manegow.tesci.ui.about.AboutFragment"
+        android:label="Sobre nosotros"
+        tools:layout="@layout/fragment_about"/>
 </navigation>

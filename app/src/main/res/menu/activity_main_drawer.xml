@@ -7,30 +7,66 @@
         <item android:title="Alumnos">
             <menu>
                 <item
+                    android:id="@+id/nav_home"
+                    android:icon="@drawable/ic_home_24px"
+                    android:title="Home" />
+                <item
                     android:id="@+id/nav_calendario"
+                    android:icon="@drawable/ic_calendar_today_black_24dp"
                     android:title="Calendario" />
                 <item
-                    android:id="@+id/nav_horarios"
+                    android:id="@+id/nav_horary"
+                    android:icon="@drawable/ic_schedule_black_24dp"
                     android:title="Horarios" />
                 <item
-                    android:id="@+id/nav_calificaciones"
+                    android:id="@+id/nav_ratings"
+                    android:icon="@drawable/ic_filter_9_plus_black_24dp"
                     android:title="Calificaciones" />
-
                 <item
-                    android:id="@+id/nav_info"
-                    android:title="Información" />
+                    android:id="@+id/nav_difusion"
+                    android:icon="@drawable/ic_emoji_objects_black_24dp"
+                    android:title="Difusión" />
             </menu>
         </item>
     </group>
 
-    <item android:title="Más opciones">
+    <item android:title="Info y Contacto">
         <menu>
             <item
-                android:id="@+id/nav_about_us"
+                android:id="@+id/nav_magazine"
+                android:icon="@drawable/ic_menu_book_24px"
                 android:title="Revista" />
             <item
-                android:id="@+id/nav_privacy_policy"
+                android:id="@+id/nav_contact_us"
+                android:icon="@drawable/ic_local_phone_24px"
                 android:title="Concactanos" />
         </menu>
     </item>
+
+    <item android:title="Redes TESCI">
+        <menu>
+            <item
+                android:icon="@drawable/ic_facebook_logo"
+                android:id="@+id/nav_facebook"
+                android:title="Facebook" />
+            <item
+                android:id="@+id/nav_twitter"
+                android:icon="@drawable/ic_twitter_black"
+                android:title="Twitter" />
+            <item
+                android:icon="@drawable/ic_youtube_black"
+                android:id="@+id/nav_youtube"
+                android:title="Youtube" />
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/nav_about_us"
+        android:icon="@drawable/ic_help_outline_24px"
+        android:title="About" />
+    <item
+        android:id="@+id/nav_logout"
+        android:icon="@drawable/ic_highlight_off_24px"
+        android:title="Cerrar sesión" />
+
 </menu>

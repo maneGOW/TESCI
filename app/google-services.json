@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "476001414616",
+    "firebase_url": "https://tesci-fb961.firebaseio.com",
+    "project_id": "tesci-fb961",
+    "storage_bucket": "tesci-fb961.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:476001414616:android:28eacce7c044ea23d716ad",
+        "android_client_info": {
+          "package_name": "com.manegow.tesci"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "476001414616-0r3d32cncefolsoontgml1v6qbvm33jl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8diqBhCV2OdhBh1z2iTf_CoCvMj2RQVo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "476001414616-0r3d32cncefolsoontgml1v6qbvm33jl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

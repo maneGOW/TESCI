@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 
 @Database(
-    entities = [User::class, Semester::class, Rating::class],
+    entities = [User::class, Semester::class, Rating::class, Days::class, HoraryDetail::class, DifusionNotes::class],
     version = 1,
     exportSchema = false
 )

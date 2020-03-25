@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="splashScreenViewModel"
+            type="com.manegow.tesci.ui.splashscreen.SplashScreenViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
