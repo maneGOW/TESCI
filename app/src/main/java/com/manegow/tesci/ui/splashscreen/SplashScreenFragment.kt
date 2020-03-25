@@ -79,8 +79,4 @@ class SplashScreenFragment : Fragment() {
         }, 2500)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        (activity as AppCompatActivity?)!!.supportActionBar!!.show()
-    }
 }

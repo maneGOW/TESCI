@@ -1,6 +1,8 @@
 package com.manegow.tesci.ui.login
 
 import android.app.Application
+import android.content.Context
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -26,6 +28,8 @@ class LoginViewModel(
     private val viewModelJob = Job()
     val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
+    private var message = ""
+
     private val _navigateToUserRegistration = MutableLiveData<Boolean>()
     val navigateToUserRegistration: LiveData<Boolean>
         get() = _navigateToUserRegistration
@@ -34,26 +38,43 @@ class LoginViewModel(
     val navigateToMainScreen: LiveData<Boolean>
         get() = _navigateToMainScreen
 
-    private fun loginUser(email: String, password: String) {
+    private val _showToastLoginResult = MutableLiveData<Boolean>()
+    val showToastLoginResult: LiveData<Boolean>
+        get() = _showToastLoginResult
+
+    fun toastLoginShowed() {
+        _showToastLoginResult.value = false
+    }
+
+    init {
         _navigateToUserRegistration.value = false
         _navigateToMainScreen.value = false
+        _showToastLoginResult.value = false
+    }
+
+    private fun loginUser(email: String, password: String) {
         firebaseAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    getLocalUser()
-                    onMainScreenNavigated()
-                    println("Successful login with email")
-                } else {
-                  /*  generateWarningAlert(
-                        "No estas registrado",
-                        "¿Deseas crear una nueva cuenta?",
-                        "Ok",
-                        this
-                    )*/
-                    println("no hay usuario registrado")
-                    _navigateToUserRegistration.value = true
+                try {
+                    when {
+                        task.isSuccessful -> {
+                            getLocalUser()
+                            onMainScreenNavigated()
+                        }
+                        task.result!!.user != null -> {
+                            println("user null")
+                        }
+                    }
+                } catch (e: Exception) {
+                    message = task.exception!!.message.toString()
+                    println(task.exception!!.message)
+                    _showToastLoginResult.value = true
                 }
             }
+    }
+
+    fun createToast(){
+        Toast.makeText(getApplication(), message, Toast.LENGTH_LONG).show()
     }
 
     private fun getLocalUser() {
@@ -70,8 +91,8 @@ class LoginViewModel(
         }
     }
 
-    private suspend fun suspendGetCurrentUser(): User?{
-        return withContext(Dispatchers.IO){
+    private suspend fun suspendGetCurrentUser(): User? {
+        return withContext(Dispatchers.IO) {
             datasource.getUser(1)
         }
     }
@@ -102,7 +123,12 @@ class LoginViewModel(
         }
     }
 
-    private fun createUserInRoom(username: String, controlNumber: String, email: String, password: String) {
+    private fun createUserInRoom(
+        username: String,
+        controlNumber: String,
+        email: String,
+        password: String
+    ) {
         uiScope.launch {
             val user = User(0, username, controlNumber, email, password, System.currentTimeMillis())
             suspendCreateUser(user)
@@ -124,7 +150,7 @@ class LoginViewModel(
                 loginUser(username, password)
             } else {
                 println("Tienes que escribir tu contraseña")
-               // generateToast("Tienes que escribir tu contraseña")
+                // generateToast("Tienes que escribir tu contraseña")
             }
         } else {
             println("Tienes que escribir tu email")

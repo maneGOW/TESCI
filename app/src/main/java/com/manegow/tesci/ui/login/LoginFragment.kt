@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -11,6 +13,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.facebook.CallbackManager
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.manegow.tesci.R
@@ -28,6 +31,7 @@ class LoginFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
+        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
         val bindingLogin : FragmentLoginBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
 
@@ -58,6 +62,13 @@ class LoginFragment : Fragment() {
             v.findNavController().navigate(LoginFragmentDirections.actionNavLoginToNavSingup())
         }
 
+        loginViewModel.showToastLoginResult.observe(viewLifecycleOwner, Observer {
+            if(it){
+                loginViewModel.createToast()
+                loginViewModel.toastLoginShowed()
+            }
+        })
+
         loginViewModel.navigateToUserRegistration.observe(viewLifecycleOwner, Observer {
                 navigate ->
             if(navigate){
@@ -82,7 +93,6 @@ class LoginFragment : Fragment() {
             loginViewModel.loginWithEmail(bindingLogin.controlNumberInputEditText.text.toString(), bindingLogin.passwordInputEditText.text.toString())
             loginViewModel.onMainScreenNavigated()
         }
-
         return bindingLogin.root
     }
 }

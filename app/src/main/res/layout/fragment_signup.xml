@@ -21,13 +21,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.29000002">
+            app:layout_constraintVertical_bias="0.26">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/controlNumberInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
+                android:drawableStart="@drawable/ic_dialpad_black_24dp"
+                android:inputType="number"
                 android:maxLength="9" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -48,7 +49,8 @@
                 android:id="@+id/emailInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:drawableStart="@drawable/ic_email_black_24dp"
+                android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -67,6 +69,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/passwordInputEditText"
                 android:layout_width="match_parent"
+                android:drawableStart="@drawable/ic_vpn_key_24px"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -87,6 +90,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/validatePasswordInputEditText"
                 android:layout_width="match_parent"
+                android:drawableStart="@drawable/ic_vpn_key_24px"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -99,10 +103,20 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:text="Register"
+            android:text="Regístrate"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/validatePasswordInputLayout" />
+
+        <TextView
+            android:id="@+id/textView17"
+            style="@style/title_text_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Regístrate"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
